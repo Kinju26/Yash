@@ -10,7 +10,7 @@ import { usePharmacy } from "@/context/PharmacyContext";
 type Step = "credentials" | "location";
 
 export function LoginScreen() {
-  const { ready, currentUser, setSessionUser, branchNames, setSelectedBranches } = usePharmacy();
+  const { ready, currentUser, setSessionUser, branchNames, setSelectedBranches, showToast } = usePharmacy();
   const router = useRouter();
   const [step, setStep] = useState<Step>("credentials");
   const [loginMsg, setLoginMsg] = useState("");
@@ -45,10 +45,11 @@ export function LoginScreen() {
   }, [step]);
 
   function goAfterAuth(userEmail: string) {
+    showToast("Sign in successfully");
+    setLoginMsg("Sign in successfully");
     setSessionUser(userEmail);
     if (multiLocation) {
       setStep("location");
-      setLoginMsg("");
       return;
     }
     if (branchNames.length === 1) setSelectedBranches([branchNames[0]]);

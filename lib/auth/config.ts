@@ -40,7 +40,7 @@ export function getSessionSecret(): string {
 
 export function getBootstrapAdmin() {
   return {
-    email: (process.env.AUTH_ADMIN_EMAIL || "admin@kinjal.com").trim().toLowerCase(),
+    email: (process.env.AUTH_ADMIN_EMAIL || "admin@gmail.com").trim().toLowerCase(),
     password: process.env.AUTH_ADMIN_PASSWORD || "",
     name: process.env.AUTH_ADMIN_NAME || "Admin",
   };
